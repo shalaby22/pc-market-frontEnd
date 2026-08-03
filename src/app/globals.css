@@ -1,22 +1,18 @@
 @import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #222529;
+  --foreground: #d5dfe2;
 }
+@theme {
+  /* 1. Change the global heading color for light mode */
+  --color-heading: #ffffff; /* Example: Deep Blue */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* You can also reference other Tailwind colors directly */
+  /* --color-heading: var(--color-blue-900); */
 }
 
 body {
