@@ -6,8 +6,9 @@ import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/Header";
 import { cookies } from "next/headers";
 import { jwtDecode } from "jwt-decode";
-import getUserProfile from "@/utils/getUserProfile";
+import getUserProfile from "@/utils/getUserProfileAction";
 import { AuthProvider } from "./context/AuthContext";
+import { ToastContainer } from "react-toastify";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,6 +45,7 @@ async function getInitialUser() {
     userName: userData.user.userName,
     lastName: userData.user.lastName,
     isAdmin: userData.user.isAdmin,
+    phone: userData.user.phone,
   };
   return result;
 }
@@ -60,6 +62,7 @@ export default async function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex">
+        <ToastContainer position="bottom-right" theme="dark" />{" "}
         <AuthProvider initialUser={initialUser}>
           <FlowbiteInit />
           <main className="grow pt-30">

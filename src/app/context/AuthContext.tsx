@@ -10,6 +10,7 @@ type User = {
   lastName: string;
   userName: string; 
   email: string;
+  phone:string;
   isAdmin: boolean; 
 } | null;
 

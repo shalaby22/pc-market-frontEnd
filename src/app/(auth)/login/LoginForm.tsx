@@ -4,10 +4,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import {
-  LoginFormType,
-  loginSchema,
-} from "@/components/validation/loginSchema";
+import { LoginFormType, loginSchema } from "@/utils/validation/loginSchema";
 import { loginAction } from "./LoginAction";
 import { useAuth } from "@/app/context/AuthContext";
 
@@ -38,6 +35,7 @@ export default function LoginForm() {
         userName: result.response.userName,
         email: result.response.email,
         isAdmin: result.response.isAdmin,
+        phone: result.response.phone,
       });
       router.push("/");
       router.refresh();

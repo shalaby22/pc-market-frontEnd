@@ -1,31 +1,39 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { RegisterAction } from "./RegisterAction";
-import {
-  RegisterFormType,
-  RegisterSchema,
-} from "@/utils/validation/RegisterSchema";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/context/AuthContext";
+import {
+  EditProfileFormType,
+  EditProfileSchema,
+} from "@/utils/validation/editProfileSchema";
+import { EditProfileAction } from "./EditProfileAction";
+import { toast } from "react-toastify";
 
-export default function RegisterForm() {
+export default function EditProfileForm() {
   const [serverError, setServerError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  const { login } = useAuth();
+  const { login, user } = useAuth();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<RegisterFormType>({
-    resolver: zodResolver(RegisterSchema),
+  } = useForm<EditProfileFormType>({
+    resolver: zodResolver(EditProfileSchema),
+    defaultValues: {
+      firstName: user?.firstName,
+      lastName: user?.lastName,
+      userName: user?.userName,
+      email: user?.email,
+      phone: user?.phone,
+    },
   });
 
-  const onSubmit = async (data: RegisterFormType) => {
+  const onSubmit = async (data: EditProfileFormType) => {
     setIsLoading(true);
     setServerError(null);
 
@@ -36,11 +44,11 @@ export default function RegisterForm() {
       email: data.email,
       phone: data.phone,
       password: data.password,
-      addresses: [data.address],
     };
-
-    const result = await RegisterAction(payload);
-
+    if (!payload.password) {
+      delete payload.password;
+    }
+    const result = await EditProfileAction(payload, user?._id as string);
     if (result.success) {
       login({
         _id: result.response._id,
@@ -51,18 +59,19 @@ export default function RegisterForm() {
         isAdmin: result.response.isAdmin,
         phone: result.response.phone,
       });
-      router.push("/");
-      router.refresh();
+      toast.success("Profile updated successfully!");
+      setIsLoading(false);
+      router.push("/account");
     } else {
-      setServerError(result.message || "failed to Register");
+      setServerError(result.message || "failed to edit your profile");
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="bg-[#2c2f33] p-8 rounded-2xl shadow-2xl w-full max-w-xl border border-neutral-800">
+    <div className=" p-8 w-full">
       <h2 className="text-3xl font-bold text-white mb-6 text-center tracking-wider">
-        REGISTER
+        Edit your profile
       </h2>
 
       {serverError && (
@@ -85,7 +94,7 @@ export default function RegisterForm() {
                   ? "border-red-500 focus:ring-red-500"
                   : "border-neutral-600 focus:ring-gray-400"
               }`}
-              placeholder="Mohamed"
+              placeholder={user?.firstName}
             />
             {errors.firstName && (
               <p className="mt-1 text-xs text-red-500">
@@ -106,7 +115,7 @@ export default function RegisterForm() {
                   ? "border-red-500 focus:ring-red-500"
                   : "border-neutral-600 focus:ring-gray-400"
               }`}
-              placeholder="Salah"
+              placeholder={user?.lastName}
             />
             {errors.lastName && (
               <p className="mt-1 text-xs text-red-500">
@@ -128,7 +137,7 @@ export default function RegisterForm() {
                 ? "border-red-500 focus:ring-red-500"
                 : "border-neutral-600 focus:ring-gray-400"
             }`}
-            placeholder="mo_salah123"
+            placeholder={user?.userName}
           />
           {errors.userName && (
             <p className="mt-1 text-xs text-red-500">
@@ -149,7 +158,7 @@ export default function RegisterForm() {
                 ? "border-red-500 focus:ring-red-500"
                 : "border-neutral-600 focus:ring-gray-400"
             }`}
-            placeholder="example@gmail.com"
+            placeholder={user?.email}
           />
           {errors.email && (
             <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>
@@ -168,31 +177,10 @@ export default function RegisterForm() {
                 ? "border-red-500 focus:ring-red-500"
                 : "border-neutral-600 focus:ring-gray-400"
             }`}
-            placeholder="0101234567"
+            placeholder={user?.phone}
           />
           {errors.phone && (
             <p className="mt-1 text-xs text-red-500">{errors.phone.message}</p>
-          )}
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-300 mb-1">
-            Address
-          </label>
-          <input
-            type="text"
-            {...register("address")}
-            className={`w-full p-3 rounded bg-neutral-800 text-white border focus:outline-none focus:ring-2 transition-colors ${
-              errors.address
-                ? "border-red-500 focus:ring-red-500"
-                : "border-neutral-600 focus:ring-gray-400"
-            }`}
-            placeholder="Cairo, Egypt"
-          />
-          {errors.address && (
-            <p className="mt-1 text-xs text-red-500">
-              {errors.address.message}
-            </p>
           )}
         </div>
 
@@ -245,7 +233,7 @@ export default function RegisterForm() {
           disabled={isLoading}
           className="w-full py-3 px-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-base transition-colors duration-200 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed mt-6"
         >
-          {isLoading ? "Registering..." : "Create Account"}
+          {isLoading ? "Editing profile..." : "Edit Profile"}
         </button>
       </form>
     </div>

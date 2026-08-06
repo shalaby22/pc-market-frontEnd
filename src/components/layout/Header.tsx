@@ -15,6 +15,11 @@ const Header = () => {
   const navRef = useRef<HTMLElement>(null);
   const { isAuthenticated, user, logout } = useAuth();
 
+  function closeAllMenus() {
+    setIsAccountMenuOpen(false);
+    setIsCategoriesOpen(false);
+    setIsMobileMenuOpen(false);
+  }
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (navRef.current && !navRef.current.contains(event.target as Node)) {
@@ -39,6 +44,7 @@ const Header = () => {
       <div className="flex flex-wrap items-center justify-around p-4 w-full relative">
         <Link
           href="/"
+          onClick={() => closeAllMenus()}
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
           <Image
@@ -59,6 +65,7 @@ const Header = () => {
             <li className="flex hover:bg-red-600 align-middle text-2xl font-bold mr-0 ">
               <Link
                 href="/"
+                onClick={() => closeAllMenus()}
                 className="block p-5 h-full w-full m-auto text-white text-center rounded md:bg-transparent md:p-5"
               >
                 HOME
@@ -100,7 +107,7 @@ const Header = () => {
                     <li className="text-2xl">
                       <Link
                         href="#"
-                        onClick={() => setIsCategoriesOpen(false)}
+                        onClick={() => closeAllMenus()}
                         className="flex items-center px-4 py-3 hover:bg-red-600 hover:text-white transition-colors duration-200"
                       >
                         <Image
@@ -115,7 +122,7 @@ const Header = () => {
                     <li className="text-2xl">
                       <Link
                         href="#"
-                        onClick={() => setIsCategoriesOpen(false)}
+                        onClick={() => closeAllMenus()}
                         className="flex items-center px-4 py-3 hover:bg-red-600 hover:text-white transition-colors duration-200"
                       >
                         <Image
@@ -130,7 +137,7 @@ const Header = () => {
                     <li className="text-2xl">
                       <Link
                         href="#"
-                        onClick={() => setIsCategoriesOpen(false)}
+                        onClick={() => closeAllMenus()}
                         className="flex items-center px-4 py-3 hover:bg-red-600 hover:text-white transition-colors duration-200"
                       >
                         <Image
@@ -145,7 +152,7 @@ const Header = () => {
                     <li className="text-2xl">
                       <Link
                         href="#"
-                        onClick={() => setIsCategoriesOpen(false)}
+                        onClick={() => closeAllMenus()}
                         className="flex items-center px-4 py-3 hover:bg-red-600 hover:text-white transition-colors duration-200"
                       >
                         <Image
@@ -165,6 +172,7 @@ const Header = () => {
             <li className="flex hover:bg-red-600 align-middle text-2xl font-bold mr-0 ">
               <Link
                 href="/about-us"
+                onClick={() => closeAllMenus()}
                 className="block p-5 h-full w-full m-auto text-white text-center rounded md:bg-transparent md:p-5"
               >
                 ABOUT US
@@ -173,6 +181,7 @@ const Header = () => {
             <li className="hover:bg-red-600 flex align-middle text-2xl font-bold mr-0 ">
               <Link
                 href="contact-us"
+                onClick={() => closeAllMenus()}
                 className="block p-5 h-full w-full m-auto text-white text-center rounded md:bg-transparent md:p-5"
               >
                 CONTACT
@@ -231,20 +240,31 @@ const Header = () => {
             </button>
 
             {isAccountMenuOpen && (
-              <div className="absolute right-0 mt-3 w-40 bg-[#2c2f33] border rounded shadow-xl z-50">
+              <div className="absolute right-0 mt-3 w-50 bg-[#2c2f33] border rounded shadow-xl z-50">
                 <ul className="py-2 text-sm text-gray-200">
                   {isAuthenticated ? (
                     <>
                       <li className="px-4 py-2 border-b border-gray-600">
-                        Hello {user?.firstName} ,
+                        Hello {user?.firstName}
+                      </li>
+                      <li>
+                        <Link
+                          onClick={() => {
+                            closeAllMenus();
+                          }}
+                          href={"/account"}
+                          className="block w-full text-left px-4 py-3 hover:bg-red-600"
+                        >
+                          my profile
+                        </Link>
                       </li>
                       <li>
                         <button
                           onClick={() => {
-                            logout(); 
-                            setIsAccountMenuOpen(false);
+                            logout();
+                            closeAllMenus();
                           }}
-                          className="block w-full text-left px-4 py-3 hover:bg-red-600"
+                          className="block w-full text-left px-4 py-3 hover:bg-red-600 cursor-pointer"
                         >
                           Logout
                         </button>
@@ -254,7 +274,7 @@ const Header = () => {
                     <>
                       <li>
                         <Link
-                          onClick={() => setIsAccountMenuOpen(false)}
+                          onClick={() => closeAllMenus()}
                           href="/login"
                           className="block px-4 py-3 hover:bg-red-600"
                         >
@@ -263,7 +283,7 @@ const Header = () => {
                       </li>
                       <li>
                         <Link
-                          onClick={() => setIsAccountMenuOpen(false)}
+                          onClick={() => closeAllMenus()}
                           href="/register"
                           className="block px-4 py-3 hover:bg-red-600"
                         >

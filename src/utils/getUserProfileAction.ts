@@ -25,7 +25,6 @@ async function getUserProfile(userId: string) {
     }
 
     const result = await response.json();
-    console.log(result.data)
     return result.data;
   } catch (error) {
     console.error("Error fetching user profile:", error);
