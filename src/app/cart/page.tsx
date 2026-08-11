@@ -1,6 +1,4 @@
 "use client";
-
-import React from "react";
 import Link from "next/link";
 import { useCart } from "@/utils/context/CartContext";
 import CartItemRow from "@/components/cart/CartItemRow";

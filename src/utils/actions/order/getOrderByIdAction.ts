@@ -1,17 +1,18 @@
 "use server";
+
 import axios from "axios";
 import { AxiosApi } from "@/components/axiosApi";
 
-export async function EditProfileAction(formData: unknown, userId: string) {
+export async function getOrderByIdAction(orderId: string) {
   try {
-    const response = await AxiosApi.put(`/users/${userId}`, formData);
-
-    return { success: true, response: response.data.data.user };
+    const response = await AxiosApi.get(`/orders/${orderId}`);
+    const result = response.data.data;
+    return { success: response.data.status === "success", response: result };
   } catch (error: unknown) {
     if (axios.isAxiosError(error) && error.response) {
       return {
         success: false,
-        message: error.response.data.data || "something went wrong",
+        message: error.response.data.data || "wrong issue while getting order",
       };
     }
     return {

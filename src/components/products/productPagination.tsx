@@ -31,13 +31,13 @@ const Pagination = ({ pagination }: PaginationProps) => {
       return pages;
     }
 
-    let start = Math.max(1, currentPage - 2);
-    let end = Math.min(totalPages, currentPage + 2);
+    let start = Math.max(1, currentPage - 1);
+    let end = Math.min(totalPages, currentPage + 1);
 
-    if (currentPage <= 3) {
-      end = 5;
-    } else if (currentPage >= totalPages - 2) {
-      start = totalPages - 4;
+    if (currentPage <= 2) {
+      end = 4;
+    } else if (currentPage >= totalPages - 1) {
+      start = totalPages - 3;
     }
 
     if (start > 1) {
@@ -71,7 +71,10 @@ const Pagination = ({ pagination }: PaginationProps) => {
         {getPageNumbers().map((pageNum, index) => {
           if (pageNum === "...") {
             return (
-              <span key={`ellipsis-${index}`} className="text-gray-400 font-bold px-1 sm:px-2">
+              <span
+                key={`ellipsis-${index}`}
+                className="text-gray-400 font-bold px-1 sm:px-2"
+              >
                 ...
               </span>
             );

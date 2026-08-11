@@ -54,7 +54,6 @@ const CartItemRow = ({ item }: CartItemRowProps) => {
       setIsUpdating(false);
     }
   };
-  console.log(product.images);
 
   return (
     <div

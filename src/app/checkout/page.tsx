@@ -93,14 +93,11 @@ export default function CheckoutPage() {
 
     setIsPlacingOrder(true);
     try {
-      console.log("Placing order with address index:", selectedAddressIndex);
-
       const res = await makeOrderAction(selectedAddressIndex);
       if (res.success) {
         toast.success("Order placed successfully!");
         router.push(`/order/${res.response.order._id}`);
       }
-
     } catch (error) {
       toast.error("Failed to place order" + error);
     } finally {
@@ -236,7 +233,7 @@ export default function CheckoutPage() {
           </section>
         </div>
 
-        <div className="lg:col-span-1">
+        <div className="lg:col-span-1 sticky top-28">
           <div className="bg-[#2c2f33] border border-neutral-700 rounded-2xl p-6 shadow-xl sticky top-24 flex flex-col gap-6">
             <h3 className="text-xl font-bold text-white pb-4 border-b border-neutral-700">
               Order Summary

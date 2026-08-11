@@ -5,8 +5,6 @@ import { ProductsResponse } from "@/utils/types/product";
 export async function getProductsAction(queryString: string = "") {
   try {
     const url = `${process.env.NEXT_PUBLIC_API_URL}/api/products${queryString ? `?${queryString}` : ""}`;
-    console.log(url);
-
     const response = await fetch(url, {
       method: "GET",
       headers: {

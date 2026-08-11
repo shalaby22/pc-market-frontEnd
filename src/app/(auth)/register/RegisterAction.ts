@@ -26,7 +26,6 @@ export async function RegisterAction(formData: {
     return { success: true, response: response.data.data.user };
   } catch (error: unknown) {
     if (axios.isAxiosError(error) && error.response) {
-      console.log(error.response.data.data);
       return {
         success: false,
         message: error.response.data.data || "something went wrong",
