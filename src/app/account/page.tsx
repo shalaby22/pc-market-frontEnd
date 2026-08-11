@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../utils/context/AuthContext";
 
 export default function AccountOverviewPage() {
   const { user } = useAuth();
@@ -15,7 +15,7 @@ export default function AccountOverviewPage() {
         <p className="text-gray-400 text-sm md:text-base">
           Welcome back,
           <span className="text-white font-semibold">
-            {" "+user?.firstName} {user?.lastName}
+            {" " + user?.firstName} {user?.lastName}
           </span>
           ! Here you can manage your account details and view your recent
           activity.
@@ -31,14 +31,15 @@ export default function AccountOverviewPage() {
             <div className="space-y-2 text-gray-400 text-sm mb-6">
               <p>
                 <strong className="text-gray-300">Name:</strong>
-                {" "+user?.firstName} {user?.lastName}
+                {" " + user?.firstName} {user?.lastName}
               </p>
               <p>
-                <strong className="text-gray-300">Email:</strong> {" "+user?.email}
+                <strong className="text-gray-300">Email:</strong>{" "}
+                {" " + user?.email}
               </p>
               <p>
                 <strong className="text-gray-300">Phone:</strong>
-                {" "+user?.phone}
+                {" " + user?.phone}
               </p>
             </div>
           </div>

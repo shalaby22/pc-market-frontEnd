@@ -10,7 +10,7 @@ export function proxy(request: NextRequest) {
   if (path.startsWith("/admin")) {
     return adminMiddleware(request);
   }
-  if (path.startsWith("/account")) {
+  if (path.startsWith("/account") || path === "/checkout") {
     return accountMiddleware(request);
   }
   if (path === "/login" || path === "/register") {
@@ -21,5 +21,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/login", "/register" , "/account/:path*"],
+  matcher: ["/admin/:path*", "/login", "/register" , "/account/:path*" , "/checkout"],
 };

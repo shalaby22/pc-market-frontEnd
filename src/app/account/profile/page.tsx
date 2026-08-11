@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/app/context/AuthContext";
+import { useAuth } from "@/utils/context/AuthContext";
 import {
   EditProfileFormType,
   EditProfileSchema,
@@ -187,7 +187,10 @@ export default function EditProfileForm() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-1">
-              Password
+              Password{" "}
+              <span className="text-[12px] font-light text-gray-200">
+                (leave it empty if you don&apos;t want to change it)
+              </span>
             </label>
             <input
               type="password"

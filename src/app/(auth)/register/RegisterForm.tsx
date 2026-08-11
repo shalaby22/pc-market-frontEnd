@@ -9,7 +9,7 @@ import {
   RegisterSchema,
 } from "@/utils/validation/RegisterSchema";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/app/context/AuthContext";
+import { useAuth } from "@/utils/context/AuthContext";
 
 export default function RegisterForm() {
   const [serverError, setServerError] = useState<string | null>(null);

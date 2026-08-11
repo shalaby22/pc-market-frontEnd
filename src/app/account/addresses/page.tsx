@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useAuth } from "@/app/context/AuthContext";
+import { useAuth } from "@/utils/context/AuthContext";
 
 import { toast } from "react-toastify";
 import { getAddressesAction } from "./getAddressesAction";

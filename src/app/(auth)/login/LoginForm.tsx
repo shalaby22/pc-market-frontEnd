@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { LoginFormType, loginSchema } from "@/utils/validation/loginSchema";
 import { loginAction } from "./LoginAction";
-import { useAuth } from "@/app/context/AuthContext";
+import { useAuth } from "@/utils/context/AuthContext";
 
 export default function LoginForm() {
   const router = useRouter();

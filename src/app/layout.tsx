@@ -6,9 +6,11 @@ import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/Header";
 import { cookies } from "next/headers";
 import { jwtDecode } from "jwt-decode";
-import getUserProfile from "@/utils/getUserProfileAction";
-import { AuthProvider } from "./context/AuthContext";
+import { AuthProvider } from "../utils/context/AuthContext";
 import { ToastContainer } from "react-toastify";
+import getUserProfile from "@/utils/getUserProfileAction";
+import { getCategoriesAction } from "@/components/categories/getCategoriesAction";
+import { CartProvider } from "@/utils/context/CartContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -56,6 +58,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const initialUser = await getInitialUser();
+  const { categories } = await getCategoriesAction();
   return (
     <html
       lang="en"
@@ -64,12 +67,14 @@ export default async function RootLayout({
       <body className="flex">
         <ToastContainer position="bottom-right" theme="dark" />{" "}
         <AuthProvider initialUser={initialUser}>
-          <FlowbiteInit />
-          <main className="grow pt-30">
-            <Header />
-            <div className="min-h-[60lvh]">{children}</div>
-            <Footer />
-          </main>
+          <CartProvider>
+            <FlowbiteInit />
+            <main className="grow pt-23">
+              <Header categories={categories || []} />
+              <div className="min-h-[60lvh]">{children}</div>
+              <Footer />
+            </main>
+          </CartProvider>
         </AuthProvider>
       </body>
     </html>

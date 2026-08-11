@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../utils/context/AuthContext";
 
 export default function AccountLayout({
   children,
@@ -22,7 +22,6 @@ export default function AccountLayout({
   return (
     <div className="min-h-screen py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-
         <aside className=" p-6 rounded-2xl border border-neutral-800 shadow-xl space-y-6">
           <div className="border-b border-neutral-700 pb-4">
             <h3 className="text-xl font-bold text-white">
