@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { getCategoriesAction } from "../categories/getCategoriesAction";
+import { getCategoriesAction } from "../../utils/actions/categories/getCategoriesAction";
 import Link from "next/link";
 
 const TopCategories = async () => {

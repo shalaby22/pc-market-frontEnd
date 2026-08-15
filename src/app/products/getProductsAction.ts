@@ -10,8 +10,9 @@ export async function getProductsAction(queryString: string = "") {
       headers: {
         "Content-Type": "application/json",
       },
-      next: { revalidate: 60 },
+      cache: "no-store",
     });
+    
 
     if (!response.ok) {
       throw new Error(`Failed to fetch products. Status: ${response.status}`);
@@ -39,7 +40,7 @@ export async function getProductByIdAction(id: string) {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/products/${id}`,
       {
-        next: { revalidate: 60 },
+        cache: "no-store",
       },
     );
 

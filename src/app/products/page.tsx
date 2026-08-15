@@ -2,7 +2,7 @@ import ProductFiltersSidebar from "@/components/products/ProductFiltersSidebar";
 import { getProductsAction } from "./getProductsAction";
 import ProductTopBar from "@/components/products/ProductTopBar";
 import ProductsGrid from "@/components/products/ProductContainer";
-import { getCategoriesAction } from "@/components/categories/getCategoriesAction";
+import { getCategoriesAction } from "@/utils/actions/categories/getCategoriesAction";
 import Pagination from "@/components/products/productPagination";
 import { ProductType } from "@/utils/types/product";
 

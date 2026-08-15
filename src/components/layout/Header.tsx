@@ -97,7 +97,7 @@ const Header = ({ categories }: HeaderProps) => {
                   setIsMobileMenuOpen(isMobileMenuOpen);
                   setIsCategoriesOpen(!isCategoriesOpen);
                 }}
-                className="block p-5 h-full w-full m-auto text-white text-center rounded lg:bg-transparent lg:p-5 hover:bg-red-600 transition-colors duration-200"
+                className="block p-5 h-full w-full m-auto text-white text-center lg:bg-transparent lg:p-5 hover:bg-red-600 transition-colors duration-200"
               >
                 <div className="flex items-center justify-center">
                   <span>CATEGORIES</span>

@@ -8,8 +8,8 @@ import { cookies } from "next/headers";
 import { jwtDecode } from "jwt-decode";
 import { AuthProvider } from "../utils/context/AuthContext";
 import { ToastContainer } from "react-toastify";
-import getUserProfile from "@/utils/getUserProfileAction";
-import { getCategoriesAction } from "@/components/categories/getCategoriesAction";
+import getUserProfile from "@/utils/actions/getUserProfileAction";
+import { getCategoriesAction } from "@/utils/actions/categories/getCategoriesAction";
 import { CartProvider } from "@/utils/context/CartContext";
 
 const geistSans = Geist({
@@ -71,7 +71,7 @@ export default async function RootLayout({
             <FlowbiteInit />
             <main className="grow pt-23">
               <Header categories={categories || []} />
-              <div className="min-h-[60lvh]">{children}</div>
+              <div className="min-h-[62lvh]">{children}</div>
               <Footer />
             </main>
           </CartProvider>

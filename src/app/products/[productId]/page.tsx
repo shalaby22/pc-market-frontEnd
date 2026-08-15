@@ -4,6 +4,7 @@ import AddToCartSection from "@/components/products/product/AddToCartSection";
 import Link from "next/link";
 import ProductImagesGallery from "@/components/products/product/ProductImagesGallery";
 import YouMayAlsoLike from "@/components/products/product/YouMayAlsoLike";
+import AdminEditButton from "@/components/admin/AdminEditButton";
 
 export default async function ProductDetailsPage({
   params,
@@ -30,6 +31,7 @@ export default async function ProductDetailsPage({
           </div>
 
           <div className="w-full md:w-2/3 flex flex-col">
+            
             <div className="flex items-center justify-between mb-4">
               <Link
                 href={`/products?category=${product.category?._id}`}
@@ -37,6 +39,8 @@ export default async function ProductDetailsPage({
               >
                 {product.category?.name || "Uncategorized"}
               </Link>
+              
+              <AdminEditButton productId={product._id} />
             </div>
 
             <h1 className="text-3xl md:text-4xl font-bold text-white leading-snug mb-4">
@@ -82,7 +86,7 @@ export default async function ProductDetailsPage({
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
-                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    d="M13 16h-1v-4h-1m1-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
                 Product Description
