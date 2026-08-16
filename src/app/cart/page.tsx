@@ -3,27 +3,13 @@ import Link from "next/link";
 import { useCart } from "@/utils/context/CartContext";
 import CartItemRow from "@/components/cart/CartItemRow";
 import OrderSummary from "@/components/cart/OrderSummary";
+import GlobalLoader from "@/components/home/GlobalLoader";
 
 export default function CartPage() {
   const { cartItems, isLoading, cartCount } = useCart();
 
   if (isLoading) {
-    return (
-      <div className="container mx-auto px-4 py-12 max-w-7xl">
-        <h1 className="text-3xl font-bold text-white mb-8">Shopping Cart</h1>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 space-y-4">
-            {[1, 2, 3].map((i) => (
-              <div
-                key={i}
-                className="h-28 bg-[#2c2f33] rounded-2xl animate-pulse border border-neutral-700"
-              />
-            ))}
-          </div>
-          <div className="h-64 bg-[#2c2f33] rounded-2xl animate-pulse border border-neutral-700" />
-        </div>
-      </div>
-    );
+    return <GlobalLoader />;
   }
 
   if (cartItems.length === 0) {

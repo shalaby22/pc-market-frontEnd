@@ -2,7 +2,10 @@
 
 import { ProductsResponse } from "@/utils/types/product";
 
-export async function getProductsAction(queryString: string = "") {
+export async function getProductsAction(
+  queryString: string = "",
+  cached?: boolean,
+) {
   try {
     const url = `${process.env.NEXT_PUBLIC_API_URL}/api/products${queryString ? `?${queryString}` : ""}`;
     const response = await fetch(url, {
@@ -10,9 +13,8 @@ export async function getProductsAction(queryString: string = "") {
       headers: {
         "Content-Type": "application/json",
       },
-      cache: "no-store",
+      ...(cached ? { next: { revalidate: 60 } } : { cache: "no-store" }),
     });
-    
 
     if (!response.ok) {
       throw new Error(`Failed to fetch products. Status: ${response.status}`);

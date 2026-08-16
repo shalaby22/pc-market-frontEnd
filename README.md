@@ -12,7 +12,7 @@ A modern, responsive, and feature-rich E-Commerce frontend for **PC Market** —
 ## 🔗 Related Repositories
 
 - **Backend REST API:** [PC Market Backend Repository](https://github.com/shalaby22/ecommerce-backend)
-- **Live Demo:** _(Coming Soon)_
+- **Live Demo:** [PC Market live demo](https://pc-market-frontend.vercel.app/)
 
 ---
 
@@ -47,7 +47,7 @@ A modern, responsive, and feature-rich E-Commerce frontend for **PC Market** —
 
 - 🎨 **Modern Tech Aesthetic UI:**
   - Sleek dark mode design optimized for gaming and PC hardware storefronts.
-  - Fully responsive across mobile, tablet, and desktop viewports.
+  - Fully responsive across mobile, tablet, and desktop viewport.
 
 ---
 
@@ -65,5 +65,22 @@ A modern, responsive, and feature-rich E-Commerce frontend for **PC Market** —
 
 ## 📸 Preview / Screenshots
 
-(screenshots of Product Catalog, Cart, Checkout, and Admin Dashboard here)
-TBA
+### 🏠 Home Page
+
+![Home Page](./README/home.PNG)
+
+### 🛍️ Products Catalog
+
+![Products page](./README/products.PNG)
+
+### 🔍 Product Details
+
+![Product Catalog](./README/product.PNG)
+
+### 🛒 Shopping Cart
+
+![Cart](./README/cart.PNG)
+
+### ⚙️ Admin Dashboard
+
+![Admin Dashboard](./README/admin.PNG)

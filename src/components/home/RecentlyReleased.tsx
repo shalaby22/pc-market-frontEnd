@@ -3,7 +3,7 @@ import ProductsGrid from "../products/ProductContainer";
 import { getProductsAction } from "@/utils/actions/products/getProductsAction";
 
 const RecentlyReleased = async () => {
-  const products = await getProductsAction();
+  const products = await getProductsAction("", true);
   return (
     <>
       <h2 className="text-4xl font-bold m-7">Recently Released</h2>

@@ -7,6 +7,7 @@ import { getOrdersForUserAction } from "@/utils/actions/order/getOrdersForUserAc
 import OrderCard from "@/components/orders/OrderCard";
 import Pagination from "@/components/products/productPagination";
 import { OrderType } from "@/app/order/[id]/page";
+import GlobalLoader from "@/components/home/GlobalLoader";
 
 const ITEMS_PER_PAGE = 5;
 
@@ -35,7 +36,8 @@ const MyOrdersPage = () => {
   }, []);
 
   if (isLoading) {
-    return <div className="text-center text-white mt-10">Loading orders...</div>;
+      return <GlobalLoader />;
+
   }
 
   if (orders.length === 0) {
@@ -44,8 +46,12 @@ const MyOrdersPage = () => {
         <div className="w-24 h-24 bg-neutral-800 rounded-full flex items-center justify-center mb-6">
           <span className="text-4xl">📦</span>
         </div>
-        <h2 className="text-2xl font-bold text-white mb-2">No orders placed yet!</h2>
-        <p className="text-gray-400 mb-6">Browse our products and start building your dream PC now.</p>
+        <h2 className="text-2xl font-bold text-white mb-2">
+          No orders placed yet!
+        </h2>
+        <p className="text-gray-400 mb-6">
+          Browse our products and start building your dream PC now.
+        </p>
         <Link
           href="/products"
           className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg transition-colors"
@@ -83,17 +89,9 @@ const MyOrdersPage = () => {
         ))}
       </div>
 
-      {totalPages > 1 && (
-        <Pagination pagination={paginationData} />
-      )}
+      {totalPages > 1 && <Pagination pagination={paginationData} />}
     </div>
   );
 };
 
 export default MyOrdersPage;
-
-
-
-
-
-

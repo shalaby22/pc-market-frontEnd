@@ -11,6 +11,7 @@ import { cancelOrderAction } from "@/utils/actions/order/cancelOrderAction";
 import { useAuth } from "@/utils/context/AuthContext";
 import { changeOrderStatusAction } from "@/utils/actions/admin/orders/changeOrderStatusAction";
 import { UserType } from "@/components/admin/UsersTableClient";
+import GlobalLoader from "@/components/home/GlobalLoader";
 
 export interface OrderItem {
   _id: string;
@@ -115,11 +116,7 @@ export default function OrderDetailsPage() {
   };
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center text-white">
-        Loading order details...
-      </div>
-    );
+    return <GlobalLoader />;
   }
 
   if (!order) {
