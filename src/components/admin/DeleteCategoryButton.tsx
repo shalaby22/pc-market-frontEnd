@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import { deleteCategoryAction } from "@/utils/actions/admin/deleteCategoryAction";
+import { deleteCategoryAction } from "@/utils/actions/admin/categories/deleteCategoryAction";
 
 export default function DeleteCategoryButton({
   id,

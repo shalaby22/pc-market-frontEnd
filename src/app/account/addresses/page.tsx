@@ -2,10 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 import { useAuth } from "@/utils/context/AuthContext";
-
 import { toast } from "react-toastify";
-import { getAddressesAction } from "./getAddressesAction";
-import { putAddressesAction } from "./putAddressesAction";
+import { getAddressesAction } from "../../../utils/actions/profile/getAddressesAction";
+import { putAddressesAction } from "../../../utils/actions/profile/putAddressesAction";
 
 export default function AddressesPage() {
   const { user } = useAuth();

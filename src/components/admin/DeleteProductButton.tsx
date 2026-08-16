@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { deleteProductAction } from "@/utils/actions/admin/deleteProductAction";
+import { deleteProductAction } from "@/utils/actions/admin/products/deleteProductAction";
 import { toast } from "react-toastify";
 
 export default function DeleteProductButton({

@@ -121,7 +121,6 @@ const ProductFiltersSidebar = ({ categories }: ProductFiltersSidebarProps) => {
           <LimitComponent onClose={closeDrawer} />
         </div>
 
-        {/* Categories Filter */}
         <div className="space-y-3">
           <h4 className="text-sm font-bold text-gray-300 uppercase tracking-wider">
             Category
@@ -154,7 +153,6 @@ const ProductFiltersSidebar = ({ categories }: ProductFiltersSidebarProps) => {
           </div>
         </div>
 
-        {/* Price Range Filter */}
         <div className="space-y-3 border-t border-neutral-700 pt-4">
           <h4 className="text-sm font-bold text-gray-300 uppercase tracking-wider">
             Price Range (EGP)

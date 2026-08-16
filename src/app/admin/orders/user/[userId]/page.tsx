@@ -1,5 +1,5 @@
 import AdminOrders from "@/components/admin/AdminOrders";
-import { getOrdersByUserIdAction } from "@/utils/actions/admin/getOrdersByUserIdAction";
+import { getOrdersByUserIdAction } from "@/utils/actions/admin/orders/getOrdersByUserIdAction";
 
 export default async function AdminUserOrdersPage({
   params,

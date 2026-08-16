@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getProductByIdAction } from "../getProductsAction";
+import { getProductByIdAction } from "../../../utils/actions/products/getProductsAction";
 import AddToCartSection from "@/components/products/product/AddToCartSection";
 import Link from "next/link";
 import ProductImagesGallery from "@/components/products/product/ProductImagesGallery";
@@ -31,7 +31,6 @@ export default async function ProductDetailsPage({
           </div>
 
           <div className="w-full md:w-2/3 flex flex-col">
-            
             <div className="flex items-center justify-between mb-4">
               <Link
                 href={`/products?category=${product.category?._id}`}
@@ -39,7 +38,7 @@ export default async function ProductDetailsPage({
               >
                 {product.category?.name || "Uncategorized"}
               </Link>
-              
+
               <AdminEditButton productId={product._id} />
             </div>
 

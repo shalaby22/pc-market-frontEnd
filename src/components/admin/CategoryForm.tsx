@@ -9,8 +9,8 @@ import {
   categorySchema,
 } from "@/utils/validation/categoryValidation";
 import { toast } from "react-toastify";
-import { updateCategoryAction } from "@/utils/actions/admin/updateCategoryAction";
-import { createCategoryAction } from "@/utils/actions/admin/createCategoryAction";
+import { updateCategoryAction } from "@/utils/actions/admin/categories/updateCategoryAction";
+import { createCategoryAction } from "@/utils/actions/admin/categories/createCategoryAction";
 import { CategoryType } from "@/utils/types/categories";
 
 export default function CategoryForm({

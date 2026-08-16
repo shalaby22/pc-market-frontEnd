@@ -1,7 +1,7 @@
 "use server";
 
 import axios from "axios";
-import { AxiosApi } from "@/components/axiosApi";
+import { AxiosApi } from "@/utils/actions/axiosApi";
 
 export async function AddToCartAction(product: {
   productId: string;

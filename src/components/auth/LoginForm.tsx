@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { LoginFormType, loginSchema } from "@/utils/validation/loginSchema";
-import { loginAction } from "./LoginAction";
+import { loginAction } from "../../utils/actions/auth/LoginAction";
 import { useAuth } from "@/utils/context/AuthContext";
 
 export default function LoginForm() {

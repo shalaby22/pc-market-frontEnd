@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Pagination from "@/components/products/productPagination";
-import { getProductsAction } from "@/app/products/getProductsAction";
+import { getProductsAction } from "@/utils/actions/products/getProductsAction";
 import { getCategoriesAction } from "@/utils/actions/categories/getCategoriesAction";
 import DeleteProductButton from "@/components/admin/DeleteProductButton";
 import Image from "next/image";
@@ -86,7 +86,6 @@ export default async function AdminProductsPage({
         </div>
       </div>
 
-      {/* Table Section */}
       <div className="bg-neutral-900 border border-neutral-800 rounded-xl overflow-hidden mb-6 w-full">
         <div className="overflow-x-auto w-full">
           <table className="w-full text-left text-sm text-gray-400">

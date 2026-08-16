@@ -1,11 +1,9 @@
 "use server";
 
 import axios from "axios";
-import { AxiosApi } from "@/components/axiosApi";
+import { AxiosApi } from "@/utils/actions/axiosApi";
 
-export async function deleteProductFromCart(product: {
-  productId: string;
-}) {
+export async function deleteProductFromCart(product: { productId: string }) {
   try {
     const response = await AxiosApi.delete(`/cart/${product.productId}`);
     const result = response.data.data;

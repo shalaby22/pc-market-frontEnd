@@ -1,9 +1,9 @@
 "use server";
 
 import axios from "axios";
-import { AxiosApi } from "@/components/axiosApi";
+import { AxiosApi } from "@/utils/actions/axiosApi";
 
-interface AddProductType {
+interface updateProductType {
   name: string;
   stock: number;
   price: number;
@@ -12,9 +12,12 @@ interface AddProductType {
   description: string;
 }
 
-export async function addProductAction(product: AddProductType) {
+export async function updateProductAction(
+  productId: string,
+  product: updateProductType,
+) {
   try {
-    const response = await AxiosApi.post(`/products`, product);
+    const response = await AxiosApi.put(`/products/${productId}`, product);
     const result = response.data.data;
     return { success: response.data.status === "success", response: result };
   } catch (error: unknown) {

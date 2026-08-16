@@ -10,7 +10,7 @@ import {
   createProductSchema,
 } from "@/utils/validation/productValidation";
 import { CategoryType } from "@/utils/types/categories";
-import { updateProductAction } from "@/utils/actions/admin/updateProductAction";
+import { updateProductAction } from "@/utils/actions/admin/products/updateProductAction";
 import { ProductType } from "@/utils/types/product";
 import { toast } from "react-toastify";
 

@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 import EditProductForm from "@/components/admin/EditProductForm";
-import { getProductByIdAction } from "@/app/products/getProductsAction";
+import { getProductByIdAction } from "@/utils/actions/products/getProductsAction";
 import { getCategoriesAction } from "@/utils/actions/categories/getCategoriesAction";
 
 export default async function EditProductPage({

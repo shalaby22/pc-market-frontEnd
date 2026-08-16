@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { RegisterAction } from "./RegisterAction";
+import { RegisterAction } from "../../utils/actions/auth/RegisterAction";
 import {
   RegisterFormType,
   RegisterSchema,

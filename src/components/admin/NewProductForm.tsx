@@ -9,7 +9,7 @@ import {
   CreateProductInput,
   createProductSchema,
 } from "@/utils/validation/productValidation";
-import { addProductAction } from "@/utils/actions/admin/addNewProductAction";
+import { addProductAction } from "@/utils/actions/admin/products/addNewProductAction";
 import { CategoryType } from "@/utils/types/categories";
 import { toast } from "react-toastify";
 
@@ -83,7 +83,6 @@ export default function NewProductForm({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      {/* 1. Name & Category */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-sm font-semibold text-gray-300 mb-2">

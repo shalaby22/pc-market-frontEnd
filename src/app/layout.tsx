@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import FlowbiteInit from "@/components/FlowbiteInit";
+import FlowbiteInit from "@/utils/FlowbiteInit";
 import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/Header";
 import { cookies } from "next/headers";
 import { jwtDecode } from "jwt-decode";
 import { AuthProvider } from "../utils/context/AuthContext";
 import { ToastContainer } from "react-toastify";
-import getUserProfile from "@/utils/actions/getUserProfileAction";
+import getUserProfile from "@/utils/actions/profile/getUserProfileAction";
 import { getCategoriesAction } from "@/utils/actions/categories/getCategoriesAction";
 import { CartProvider } from "@/utils/context/CartContext";
 
@@ -40,16 +40,20 @@ async function getInitialUser() {
   if (!userId) return null;
 
   const userData = await getUserProfile(userId);
-  const result = {
-    _id: userData.user._id,
-    email: userData.user.email,
-    firstName: userData.user.firstName,
-    userName: userData.user.userName,
-    lastName: userData.user.lastName,
-    isAdmin: userData.user.isAdmin,
-    phone: userData.user.phone,
-  };
-  return result;
+  if (userData) {
+    const result = {
+      _id: userData.user._id,
+      email: userData.user.email,
+      firstName: userData.user.firstName,
+      userName: userData.user.userName,
+      lastName: userData.user.lastName,
+      isAdmin: userData.user.isAdmin,
+      phone: userData.user.phone,
+    };
+    return result;
+  } else {
+    return null;
+  }
 }
 
 export default async function RootLayout({

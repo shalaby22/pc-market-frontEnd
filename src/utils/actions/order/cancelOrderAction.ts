@@ -1,7 +1,7 @@
 "use server";
 
 import axios from "axios";
-import { AxiosApi } from "@/components/axiosApi";
+import { AxiosApi } from "@/utils/actions/axiosApi";
 
 export async function cancelOrderAction(orderId: string) {
   try {
@@ -12,7 +12,8 @@ export async function cancelOrderAction(orderId: string) {
     if (axios.isAxiosError(error) && error.response) {
       return {
         success: false,
-        message: error.response.data.data || "wrong issue while cancelling order",
+        message:
+          error.response.data.data || "wrong issue while cancelling order",
       };
     }
     return {

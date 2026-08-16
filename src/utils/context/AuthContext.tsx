@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, ReactNode } from "react";
 import { useRouter } from "next/navigation";
-import { logoutAction } from "../../app/(auth)/logoutAction";
+import { logoutAction } from "../actions/auth/logoutAction";
 
 type User = {
   _id: string;

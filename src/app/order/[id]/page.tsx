@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import { getOrderByIdAction } from "@/utils/actions/order/getOrderByIdAction";
 import { cancelOrderAction } from "@/utils/actions/order/cancelOrderAction";
 import { useAuth } from "@/utils/context/AuthContext";
-import { changeOrderStatusAction } from "@/utils/actions/admin/changeOrderStatusAction";
+import { changeOrderStatusAction } from "@/utils/actions/admin/orders/changeOrderStatusAction";
 import { UserType } from "@/components/admin/UsersTableClient";
 
 export interface OrderItem {
@@ -159,7 +159,6 @@ export default function OrderDetailsPage() {
 
   const currentStatus = statusConfig[order.status] || statusConfig.pending;
 
-  // Timeline Data
   const flow = ["pending", "paid", "shipped", "delivered"];
   const currentStepIndex = flow.indexOf(order.status);
   const steps = [

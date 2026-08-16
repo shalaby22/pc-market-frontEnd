@@ -1,6 +1,6 @@
 import React from "react";
 import ProductsGrid from "../products/ProductContainer";
-import { getProductsAction } from "@/app/products/getProductsAction";
+import { getProductsAction } from "@/utils/actions/products/getProductsAction";
 
 const RecentlyReleased = async () => {
   const products = await getProductsAction();

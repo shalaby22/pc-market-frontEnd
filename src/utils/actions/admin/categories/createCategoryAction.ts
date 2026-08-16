@@ -1,30 +1,25 @@
 "use server";
 
 import axios from "axios";
-import { AxiosApi } from "@/components/axiosApi";
+import { AxiosApi } from "@/utils/actions/axiosApi";
+import { revalidateTag } from "next/cache";
 
-interface updateProductType {
+export async function createCategoryAction(category: {
   name: string;
-  stock: number;
-  price: number;
-  category: string;
-  images: string[];
   description: string;
-}
-
-export async function updateProductAction(
-  productId: string,
-  product: updateProductType,
-) {
+  image: string;
+}) {
   try {
-    const response = await AxiosApi.put(`/products/${productId}`, product);
+    const response = await AxiosApi.post(`/categories`, category);
     const result = response.data.data;
+    revalidateTag("categories", { expire: 0 });
     return { success: response.data.status === "success", response: result };
   } catch (error: unknown) {
     if (axios.isAxiosError(error) && error.response) {
       return {
         success: false,
-        message: error.response.data.data || "wrong issue while adding product",
+        message:
+          error.response.data.data || "wrong issue while adding category",
       };
     }
     return {

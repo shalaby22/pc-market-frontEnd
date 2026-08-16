@@ -65,7 +65,6 @@ const ProductCard = ({ product }: { product: ProductType }) => {
             {product.price.toLocaleString("en-US")} EGP
           </span>
 
-          {/* 🔘 لوجيك الزرار مبسط جداً */}
           {product.stock === 0 ? (
             <button
               type="button"

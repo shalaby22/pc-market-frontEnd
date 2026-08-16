@@ -1,5 +1,5 @@
 import ProductFiltersSidebar from "@/components/products/ProductFiltersSidebar";
-import { getProductsAction } from "./getProductsAction";
+import { getProductsAction } from "../../utils/actions/products/getProductsAction";
 import ProductTopBar from "@/components/products/ProductTopBar";
 import ProductsGrid from "@/components/products/ProductContainer";
 import { getCategoriesAction } from "@/utils/actions/categories/getCategoriesAction";
@@ -37,10 +37,8 @@ export default async function ProductsPage({
 
           {success ? (
             <>
-              {/* عرض شبكة المنتجات */}
               <ProductsGrid products={products as ProductType[]} />
 
-              {/* عرض الـ Pagination في الأسفل */}
               {pagination && <Pagination pagination={pagination} />}
             </>
           ) : (

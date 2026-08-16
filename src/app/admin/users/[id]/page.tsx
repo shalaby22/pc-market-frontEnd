@@ -1,6 +1,6 @@
 import React from "react";
 import { notFound } from "next/navigation";
-import { getUserByIdAction } from "@/utils/actions/admin/getUserByIdAction";
+import { getUserByIdAction } from "@/utils/actions/admin/users/getUserByIdAction";
 import UserForm from "@/components/account/UserForm";
 import Link from "next/link";
 

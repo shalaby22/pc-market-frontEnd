@@ -1,8 +1,7 @@
 import UsersTableClient from "@/components/admin/UsersTableClient";
-import { getAllUsersAction } from "@/utils/actions/admin/getAllUsersAction";
+import { getAllUsersAction } from "@/utils/actions/admin/users/getAllUsersAction";
 
 export default async function AdminUsersPage() {
-  // Fetch users from the backend
   const response = await getAllUsersAction();
   const users = response.response || [];
   return (

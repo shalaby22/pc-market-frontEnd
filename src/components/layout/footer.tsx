@@ -23,17 +23,14 @@ const Footer = () => {
               </h2>
               <ul className="text-body font-medium">
                 <li className="mb-4">
-                  <a href="" className="hover:underline">
+                  <Link href="/account" className="hover:underline">
                     My Account
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href=""
-                    className="hover:underline"
-                  >
+                  <Link href="/account/orders" className="hover:underline">
                     My Orders
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -44,17 +41,14 @@ const Footer = () => {
               <ul className="text-body font-medium">
                 <li className="mb-4">
                   <a
-                    href="https://github.com/themesberg/flowbite"
+                    href="https://github.com/shalaby22/"
                     className="hover:underline "
                   >
                     Github
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="https://discord.gg/4eeurUVvTy"
-                    className="hover:underline"
-                  >
+                  <a href="#" className="hover:underline">
                     Discord
                   </a>
                 </li>
@@ -66,14 +60,14 @@ const Footer = () => {
               </h2>
               <ul className="text-body font-medium">
                 <li className="mb-4">
-                  <a href="#" className="hover:underline">
+                  <Link href="/about-us" className="hover:underline">
                     About Us
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:underline">
+                  <Link href="/contact-us" className="hover:underline">
                     Contact
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -83,9 +77,9 @@ const Footer = () => {
         <div className="sm:flex sm:items-center sm:justify-between">
           <span className="text-sm text-body sm:text-center">
             © 2025{" "}
-            <a href="https://flowbite.com/" className="hover:underline">
+            <Link href="/" className="hover:underline">
               PC MARKET™
-            </a>
+            </Link>
             . All Rights Reserved.
           </span>
           <div className="flex mt-4 sm:justify-center sm:mt-0">

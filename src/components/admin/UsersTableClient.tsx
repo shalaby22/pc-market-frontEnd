@@ -34,7 +34,6 @@ export default function UsersTableClient({
         user.email.toLowerCase().includes(searchQuery.trim().toLowerCase()),
       );
 
-  // Reset to page 1 when searching
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
     const params = new URLSearchParams(searchParams.toString());
@@ -42,7 +41,6 @@ export default function UsersTableClient({
     router.replace(`?${params.toString()}`);
   };
 
-  // Frontend Pagination Logic
   const totalPages = Math.ceil(filteredUsers.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;
@@ -59,7 +57,6 @@ export default function UsersTableClient({
 
   return (
     <div className="w-full">
-      {/* Header & Search */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
           <h1 className="text-2xl font-bold text-white mb-1">
@@ -70,7 +67,6 @@ export default function UsersTableClient({
           </p>
         </div>
 
-        {/* Search Input */}
         <div className="relative w-full sm:w-72">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <svg
@@ -97,7 +93,6 @@ export default function UsersTableClient({
         </div>
       </div>
 
-      {/* Table Section */}
       <div className="bg-neutral-900 border border-neutral-800 rounded-xl overflow-hidden mb-6 w-full">
         <div className="overflow-x-auto w-full">
           <table className="w-full text-left text-sm text-gray-400">
@@ -105,7 +100,6 @@ export default function UsersTableClient({
               <tr>
                 <th className="px-4 py-3 md:px-6 md:py-4">Full Name</th>
                 <th className="px-4 py-3 md:px-6 md:py-4">Email</th>
-                {/* Mobile hidden on small screens */}
                 <th className="hidden md:table-cell px-4 py-3 md:px-6 md:py-4">
                   Mobile
                 </th>
@@ -165,7 +159,6 @@ export default function UsersTableClient({
         </div>
       </div>
 
-      {/* Pagination component (only show if there's more than 1 page) */}
       {totalPages > 1 && <Pagination pagination={paginationData} />}
     </div>
   );

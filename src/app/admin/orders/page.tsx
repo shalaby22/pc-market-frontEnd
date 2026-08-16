@@ -1,5 +1,5 @@
 import React from "react";
-import { getAllOrdersAction } from "@/utils/actions/admin/getAllOrdersAction";
+import { getAllOrdersAction } from "@/utils/actions/admin/orders/getAllOrdersAction";
 import AdminOrders from "@/components/admin/AdminOrders";
 
 export default async function AdminOrdersPage({

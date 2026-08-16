@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers";
 import axios from "axios";
-import { AxiosApi } from "@/components/axiosApi";
+import { AxiosApi } from "@/utils/actions/axiosApi";
 
 export async function loginAction(formData: {
   email: string;

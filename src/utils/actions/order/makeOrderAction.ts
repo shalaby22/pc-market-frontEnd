@@ -1,7 +1,7 @@
 "use server";
 
 import axios from "axios";
-import { AxiosApi } from "@/components/axiosApi";
+import { AxiosApi } from "@/utils/actions/axiosApi";
 
 export async function makeOrderAction(selectedAddressIndex: number) {
   try {
@@ -15,9 +15,7 @@ export async function makeOrderAction(selectedAddressIndex: number) {
     if (axios.isAxiosError(error) && error.response) {
       return {
         success: false,
-        message:
-          error.response.data.data ||
-          "wrong issue while making order",
+        message: error.response.data.data || "wrong issue while making order",
       };
     }
     return {

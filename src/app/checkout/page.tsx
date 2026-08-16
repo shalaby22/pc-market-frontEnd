@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useAuth } from "@/utils/context/AuthContext";
 import { useCart } from "@/utils/context/CartContext";
-import { getAddressesAction } from "../account/addresses/getAddressesAction";
-import { putAddressesAction } from "../account/addresses/putAddressesAction";
+import { getAddressesAction } from "../../utils/actions/profile/getAddressesAction";
+import { putAddressesAction } from "../../utils/actions/profile/putAddressesAction";
 import { toast } from "react-toastify";
 import { makeOrderAction } from "@/utils/actions/order/makeOrderAction";
 
@@ -15,7 +15,6 @@ export default function CheckoutPage() {
   const { user } = useAuth();
   const { cartItems, cartTotal, isLoading: isCartLoading } = useCart();
 
-  // States
   const [addresses, setAddresses] = useState<string[]>([]);
   const [selectedAddressIndex, setSelectedAddressIndex] = useState<
     number | null
@@ -25,14 +24,12 @@ export default function CheckoutPage() {
   const [isSavingAddress, setIsSavingAddress] = useState(false);
   const [isPlacingOrder, setIsPlacingOrder] = useState(false);
 
-  // 1. Auth Guard & Empty Cart Redirect
   useEffect(() => {
     if (!isCartLoading && cartItems.length === 0) {
       router.push("/cart");
     }
   }, [cartItems.length, isCartLoading, router]);
 
-  // 2. Fetch User Addresses
   useEffect(() => {
     const fetchAddresses = async () => {
       if (!user?._id) return;
@@ -55,7 +52,6 @@ export default function CheckoutPage() {
     fetchAddresses();
   }, [user]);
 
-  // 3. Add New Address
   const handleAddAddress = async (e: React.FormEvent) => {
     e.preventDefault();
     const trimmed = newAddress.trim();
@@ -84,7 +80,6 @@ export default function CheckoutPage() {
     }
   };
 
-  // 4. Place Order Handler
   const handlePlaceOrder = async () => {
     if (selectedAddressIndex === null) {
       toast.error("Please select a shipping address");
@@ -113,7 +108,6 @@ export default function CheckoutPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         <div className="lg:col-span-2 space-y-6">
-          {/* Section 1: Contact Information */}
           <section className="bg-[#2c2f33] border border-neutral-700 rounded-2xl p-6">
             <h2 className="text-xl font-bold text-white mb-4 border-b border-neutral-700 pb-2">
               1. Contact Information
@@ -136,7 +130,6 @@ export default function CheckoutPage() {
             </div>
           </section>
 
-          {/* Section 2: Shipping Address */}
           <section className="bg-[#2c2f33] border border-neutral-700 rounded-2xl p-6">
             <h2 className="text-xl font-bold text-white mb-4 border-b border-neutral-700 pb-2">
               2. Shipping Address
@@ -209,7 +202,6 @@ export default function CheckoutPage() {
             )}
           </section>
 
-          {/* Section 3: Payment Method */}
           <section className="bg-[#2c2f33] border border-neutral-700 rounded-2xl p-6">
             <h2 className="text-xl font-bold text-white mb-4 border-b border-neutral-700 pb-2">
               3. Payment Method

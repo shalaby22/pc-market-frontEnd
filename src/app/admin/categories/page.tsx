@@ -116,7 +116,6 @@ export default async function AdminCategoriesPage() {
                           </svg>
                         </Link>
 
-                        {/* زرار الحذف */}
                         <DeleteCategoryButton
                           id={category._id}
                           categoryName={category.name}

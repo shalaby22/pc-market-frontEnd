@@ -72,7 +72,6 @@ export default function AccountLayout({
           </nav>
         </aside>
 
-        {/* Dynamic Content Area */}
         <main className="md:col-span-3 bg-[#2c2f33] p-8 rounded-2xl border border-neutral-800 shadow-xl">
           {children}
         </main>

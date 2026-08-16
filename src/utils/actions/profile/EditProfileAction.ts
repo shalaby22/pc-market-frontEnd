@@ -1,6 +1,6 @@
 "use server";
 import axios from "axios";
-import { AxiosApi } from "@/components/axiosApi";
+import { AxiosApi } from "@/utils/actions/axiosApi";
 
 export async function EditProfileAction(formData: unknown, userId: string) {
   try {

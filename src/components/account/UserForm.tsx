@@ -11,7 +11,7 @@ import {
 import { toast } from "react-toastify";
 import { useAuth } from "@/utils/context/AuthContext";
 import { UserType } from "../admin/UsersTableClient";
-import { EditProfileAction } from "@/app/account/profile/EditProfileAction";
+import { EditProfileAction } from "@/utils/actions/profile/EditProfileAction";
 
 type SharedUserFormProps = {
   targetUser: UserType;

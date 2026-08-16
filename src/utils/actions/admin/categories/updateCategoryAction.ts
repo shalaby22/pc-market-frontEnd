@@ -1,7 +1,7 @@
 "use server";
 
 import axios from "axios";
-import { AxiosApi } from "@/components/axiosApi";
+import { AxiosApi } from "@/utils/actions/axiosApi";
 import { revalidateTag } from "next/cache";
 
 export async function updateCategoryAction(

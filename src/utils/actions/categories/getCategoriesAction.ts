@@ -6,7 +6,7 @@ export async function getCategoriesAction() {
       `${process.env.NEXT_PUBLIC_API_URL}/api/categories`,
       {
         method: "GET",
-        next: { revalidate: 3600, tags: ["categories"] }, //todo
+        next: { revalidate: 3600, tags: ["categories"] },
       },
     );
 
