@@ -8,7 +8,7 @@ const TopCategories = async () => {
   return (
     <>
       <h2 className="text-4xl font-bold m-7">TOP CATEGORIES</h2>
-      <div className="flex flex-wrap items-center justify-center">
+      <div className="flex flex-wrap items-start justify-center">
         {categories.map(
           (category: { image: string; _id: string; name: string }) => {
             return (
